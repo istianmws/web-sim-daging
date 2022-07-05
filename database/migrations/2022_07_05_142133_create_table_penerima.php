@@ -13,11 +13,13 @@ class CreateTablePenerima extends Migration
      */
     public function up()
     {
-        Schema::create('penerima',function (Blueprint $table){
+        Schema::create('penerima', function (Blueprint $table) {
             $table->id();
             $table->string('nama');
+            $table->string('dusun');
+            $table->string('desa');
             $table->timestamps();
-        } );
+        });
     }
 
     /**

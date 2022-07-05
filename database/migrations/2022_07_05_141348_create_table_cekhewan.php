@@ -13,8 +13,9 @@ class CreateTableCekhewan extends Migration
      */
     public function up()
     {
-        Schema::create('table_cekhewan', function (Blueprint $table) {
+        Schema::create('cekhewan', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('id_hewan');
             $table->foreign('id_hewan')->references('id')->on('hewan');
             $table->string('kepala');
             $table->string('kaki');
@@ -34,6 +35,6 @@ class CreateTableCekhewan extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('table_cekhewan');
+        Schema::dropIfExists('cekhewan');
     }
 }

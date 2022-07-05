@@ -15,8 +15,9 @@ class CreateTableKelet extends Migration
     {
         Schema::create('kelet', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('id_hewan');
             $table->foreign('id_hewan')->references('id')->on('hewan');
-            $table->enum('type',['Belum'],['Proses'],['Selesai']);
+            $table->enum('type',['Belum','Proses','Selesai']);
             $table->timestamps();
         });
     }
