@@ -13,6 +13,22 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('', function () {
+    if (session()->has('userLogged')) {
+        if (session()->get('userLogged') != null) {
+        return redirect()->route('dashboard');
+        }
+        return redirect()->route('login');
+        }
+        return redirect()->route('login');
+        });
+Auth::routes();
+Route::post('/login', 'AuthController@login');
+Route::get('/not-found', 'HomeController@not_found')->name('notFound');
+Route::group(['middleware' => 'isHaveToken'], function()
+{
+Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/dashboard', 'HomeController@dashboard')->name('dashboard');
 });
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

@@ -18,7 +18,6 @@ class CreateUsersTable extends Migration
             $table->string('username');
             $table->enum('type', ['admin', 'panitia']);
             $table->string('password');
-            $table->rememberToken();
             $table->timestamps();
         });
     }
